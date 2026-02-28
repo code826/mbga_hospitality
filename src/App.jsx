@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  User, 
-  Phone, 
-  Contact, 
-  CreditCard, 
-  Send, 
-  X, 
-  CheckCircle2, 
-  Mail, 
+import {
+  User,
+  Phone,
+  Contact,
+  CreditCard,
+  Send,
+  X,
+  CheckCircle2,
+  Mail,
   ArrowRight,
   MapPin,
   Hotel,
@@ -40,7 +40,7 @@ const App = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    
+
     // Name validation: Letters and spaces only
     if (!/^[a-zA-Z\s]+$/.test(formData.name)) {
       newErrors.name = "Name should only contain letters and spaces";
@@ -62,14 +62,14 @@ const App = () => {
 
   const handleInputChange = (e) => {
     let { name, value } = e.target;
-    
+
     // For numeric fields, only allow digits
     if (name === 'mobile' || name === 'cardNumber') {
-      value = value.replace(/\D/g, ''); 
+      value = value.replace(/\D/g, '');
       if (name === 'mobile') value = value.slice(0, 10);
       if (name === 'cardNumber') value = value.slice(0, 16);
     }
-    
+
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: undefined }));
     }
@@ -78,13 +78,13 @@ const App = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
-    
+
     setIsSubmitting(true);
 
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbZg2vNY7XuREJtIZEyHx9MzxtsMruOHhV-kaiPpQm3mckRtXiksWHbOLp-in9eAi-g/exec';
-    const SECURITY_TOKEN = 'xyxsdsds##$$@@@_sjfbskjbfskjf'; 
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwZg2vNY7XuREJtIZEyHx9MzxtsMruOHhV-kaiPpQm3mckRtXiksWHbOLp-in9eAi-g/exec';
+    const SECURITY_TOKEN = 'xyxsdsds##$$@@@_sjfbskjbfskjf';
 
     try {
       if (SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
@@ -121,7 +121,7 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-orange-100">
-      
+
       {/* Navigation */}
       <nav className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto bg-white/70 backdrop-blur-md sticky top-0 z-40 border-b border-slate-100">
         <div className="flex items-center gap-3 font-bold text-xl text-orange-600">
@@ -135,7 +135,7 @@ const App = () => {
           <a href="#about" className="hover:text-orange-600 transition-colors">Our Mission</a>
           <a href="#contact" className="hover:text-orange-600 transition-colors">Reach Us</a>
         </div>
-        <button 
+        <button
           onClick={() => setIsModalOpen(true)}
           className="bg-orange-600 text-white px-6 py-2.5 rounded-xl text-sm font-bold uppercase tracking-wide hover:bg-orange-700 transition-all shadow-lg shadow-orange-200"
         >
@@ -146,19 +146,19 @@ const App = () => {
       {/* Hero Section */}
       <main className="max-w-7xl mx-auto px-6 pt-12 pb-32">
         <div className="flex flex-col items-center text-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             className="w-full max-w-4xl mb-12 rounded-[2rem] overflow-hidden shadow-2xl border-8 border-white bg-white"
           >
-            <img 
-              src="./hero.gif" 
-              alt="Bharat Mata" 
+            <img
+              src="./hero.gif"
+              alt="Bharat Mata"
               className="w-full h-auto max-h-[600px] object-contain"
             />
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="space-y-6 max-w-4xl"
@@ -167,15 +167,15 @@ const App = () => {
               Make Bharat Great Again
             </span>
             <h1 className="text-5xl md:text-7xl font-black tracking-tight text-slate-900 leading-[1.05]">
-              Empowering India's <br /> 
+              Empowering India's <br />
               <span className="text-orange-600 italic font-serif">Hospitality Sector.</span>
             </h1>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-medium">
-              Dedicated to transforming Bharat from a developing to a developed nation by 2050. 
+              Dedicated to transforming Bharat from a developing to a developed nation by 2050.
               Our hospitality wing focuses on excellence, integrity, and shared prosperity.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-              <button 
+              <button
                 onClick={() => setIsModalOpen(true)}
                 className="flex items-center justify-center gap-2 bg-slate-900 text-white px-10 py-5 rounded-2xl text-lg font-black hover:bg-slate-800 transition-all shadow-2xl shadow-slate-300"
               >
@@ -188,23 +188,23 @@ const App = () => {
         {/* Feature/Summary Section */}
         <div id="about" className="mt-32 grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
           {[
-            { 
-              icon: <Users className="text-orange-500" />, 
-              title: "Rashtravad First", 
-              desc: "Promoting nationalism through every interaction, aiming for collective progress of all citizens." 
+            {
+              icon: <Users className="text-orange-500" />,
+              title: "Rashtravad First",
+              desc: "Promoting nationalism through every interaction, aiming for collective progress of all citizens."
             },
-            { 
-              icon: <Building2 className="text-blue-500" />, 
-              title: "Bharat Dham", 
-              desc: "Inspired by the Bharat Dham Memorial, we strive for a culturally rich and developed India." 
+            {
+              icon: <Building2 className="text-blue-500" />,
+              title: "Bharat Dham",
+              desc: "Inspired by the Bharat Dham Memorial, we strive for a culturally rich and developed India."
             },
-            { 
-              icon: <Globe className="text-green-500" />, 
-              title: "Vision 2050", 
-              desc: "Answering critical questions for India's future through the lens of Kisan, Jawan, and Vigyan." 
+            {
+              icon: <Globe className="text-green-500" />,
+              title: "Vision 2050",
+              desc: "Answering critical questions for India's future through the lens of Kisan, Jawan, and Vigyan."
             }
           ].map((item, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
               whileHover={{ y: -10 }}
               className="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/50"
@@ -269,15 +269,15 @@ const App = () => {
       <AnimatePresence>
         {isModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => !isSubmitting && setIsModalOpen(false)}
               className="absolute inset-0 bg-slate-900/70 backdrop-blur-md"
             />
-            
-            <motion.div 
+
+            <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 30 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 30 }}
@@ -289,7 +289,7 @@ const App = () => {
                   <h2 className="text-3xl font-black text-slate-900 tracking-tight">Data Entry</h2>
                   <p className="text-slate-500 text-sm mt-1 font-bold">MBGA Hospitality Records</p>
                 </div>
-                <button 
+                <button
                   onClick={() => setIsModalOpen(false)}
                   className="p-3 hover:bg-slate-100 rounded-full transition-colors"
                 >
@@ -300,7 +300,7 @@ const App = () => {
               {/* Success Message */}
               {submitted ? (
                 <div className="p-16 flex flex-col items-center text-center space-y-6">
-                  <motion.div 
+                  <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     className="w-24 h-24 bg-green-50 text-green-500 rounded-full flex items-center justify-center mb-2 shadow-inner"
@@ -312,7 +312,7 @@ const App = () => {
               ) : (
                 <form onSubmit={handleSubmit} className="p-10 pt-4 space-y-6">
                   {submitError && (
-                    <motion.div 
+                    <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
                       className="bg-red-50 text-red-600 p-5 rounded-2xl text-sm font-bold border border-red-100 mb-4"
@@ -320,7 +320,7 @@ const App = () => {
                       error occur please try in sometime
                     </motion.div>
                   )}
-                  
+
                   <div className="space-y-5">
                     {/* Name Field */}
                     <div className="space-y-2">
@@ -329,6 +329,7 @@ const App = () => {
                         <User className={`absolute left-5 top-1/2 -translate-y-1/2 ${errors.name ? 'text-red-400' : 'text-slate-400'}`} size={20} />
                         <input
                           required
+                          autoComplete="off"
                           name="name"
                           value={formData.name}
                           onChange={handleInputChange}
@@ -347,6 +348,7 @@ const App = () => {
                         <Phone className={`absolute left-5 top-1/2 -translate-y-1/2 ${errors.mobile ? 'text-red-400' : 'text-slate-400'}`} size={20} />
                         <input
                           required
+                          autoComplete="off"
                           name="mobile"
                           value={formData.mobile}
                           onChange={handleInputChange}
@@ -366,6 +368,7 @@ const App = () => {
                           <Contact className={`absolute left-5 top-1/2 -translate-y-1/2 text-slate-400`} size={20} />
                           <input
                             required
+                            autoComplete="off"
                             name="idNumber"
                             value={formData.idNumber}
                             onChange={handleInputChange}
@@ -383,6 +386,7 @@ const App = () => {
                           <CreditCard className={`absolute left-5 top-1/2 -translate-y-1/2 ${errors.cardNumber ? 'text-red-400' : 'text-slate-400'}`} size={20} />
                           <input
                             required
+                            autoComplete="off"
                             name="cardNumber"
                             value={formData.cardNumber}
                             onChange={handleInputChange}
