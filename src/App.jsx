@@ -51,9 +51,9 @@ const App = () => {
       newErrors.mobile = "Mobile number must be exactly 10 digits";
     }
 
-    // Card Number validation: Exactly 16 digits
-    if (!/^\d{16}$/.test(formData.cardNumber)) {
-      newErrors.cardNumber = "Card number must be exactly 16 digits";
+    // Card Number validation: 1 to 5 digits
+    if (!/^\d{1,5}$/.test(formData.cardNumber)) {
+      newErrors.cardNumber = "Card number must be between 1 and 5 digits";
     }
 
     setErrors(newErrors);
@@ -67,7 +67,7 @@ const App = () => {
     if (name === 'mobile' || name === 'cardNumber') {
       value = value.replace(/\D/g, '');
       if (name === 'mobile') value = value.slice(0, 10);
-      if (name === 'cardNumber') value = value.slice(0, 16);
+      if (name === 'cardNumber') value = value.slice(0, 5);
     }
 
     if (errors[name]) {
@@ -391,7 +391,7 @@ const App = () => {
                             value={formData.cardNumber}
                             onChange={handleInputChange}
                             type="text"
-                            placeholder="16 Digit Card"
+                            placeholder="1-5 Digit Card"
                             className={`w-full bg-slate-50 border-2 ${errors.cardNumber ? 'border-red-400 focus:ring-red-500/10' : 'border-slate-100 focus:ring-orange-500/10'} pl-14 pr-6 py-5 rounded-[1.5rem] outline-none focus:ring-8 focus:bg-white focus:border-orange-600/20 transition-all font-bold text-slate-700`}
                           />
                         </div>
